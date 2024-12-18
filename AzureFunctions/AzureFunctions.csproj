@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Define o grupo de propriedades do projeto -->
+  <PropertyGroup>
+    <!-- Especifica a versão do framework de destino -->
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <!-- Define a versão das Azure Functions -->
+    <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+  </PropertyGroup>
+  <!-- Define as referências de pacotes necessárias para o projeto -->
+  <ItemGroup>
+    <!-- Referência para o pacote de extensões de armazenamento do Azure WebJobs -->
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.10" />
+    <!-- Referência para o SDK de funções do .NET -->
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.3" />
+    <!-- Referência para o pacote Newtonsoft.Json para manipulação de JSON -->
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+  <!-- Configurações de arquivos que não são compilados -->
+  <ItemGroup>
+    <!-- Configuração para o arquivo host.json -->
+    <None Update="host.json">
+      <!-- Define que o arquivo deve ser copiado para o diretório de saída se for o mais recente -->
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <!-- Configuração para o arquivo local.settings.json -->
+    <None Update="local.settings.json">
+      <!-- Define que o arquivo deve ser sempre copiado para o diretório de saída -->
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <!-- Define pastas adicionais no projeto -->
+  <ItemGroup>
+    <!-- Inclui a pasta para perfis de publicação -->
+    <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
+</Project>
